@@ -1,0 +1,32 @@
+name: 'Custom Action Test'
+description: 'this is my first custom action test'
+author: 'J-Ymini'
+inputs:
+  GITHUB_TOKEN:
+    description: 'The token to be used for creating the pull request. Can be set to the one given for the workflow or another user.'
+    required: true
+  JIRA_HOST_NAME:
+    description: 'The Jira host name.'
+    required: true
+  JIRA_API_TOKEN:
+    description: 'The Jira API token.'
+    required: true
+  JIRA_USER_EMAIL:
+    description: 'The Jira user email.'
+    required: true
+  ISSUE_KEY_REGEX:
+    description: "The RegExp for Issue Key Tracking (it's value must be included in branch)."
+    required: true
+  REPO:
+    description: 'The Github Repo Name'
+    required: true
+  OWNER:
+    description: 'The Github Repository'
+    required: true
+  PULL_REQUEST_REF:
+    description: 'The Pull Request Ref'
+    required: true
+
+runs:
+  using: 'node20'
+  main: './dist/index.js'
