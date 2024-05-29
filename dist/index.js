@@ -1,5 +1,5 @@
 import core from "@actions/core";
-import { updatePullRequestTitle } from './utils';
+import { updatePullRequestTitle } from './utils.js';
 const GITHUB_TOKEN = core.getInput('GITHUB_TOKEN');
 const JIRA_HOST_NAME = core.getInput('JIRA_HOST_NAME');
 const JIRA_API_TOKEN = core.getInput('JIRA_API_TOKEN');

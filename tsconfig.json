@@ -10,4 +10,8 @@
     "moduleResolution": "node",
     "skipLibCheck": true,
   },
+  "tsc-alias": {
+    "resolveFullPaths": true,
+    "verbose": false,
+  },
 }
