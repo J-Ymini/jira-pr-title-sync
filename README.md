@@ -53,7 +53,7 @@ jobs:
           node-version: 20
 
       - name: Synchronize PR Title
-        uses: 'J-Ymini/jira-pr-title-sync@v0.1'
+        uses: 'J-Ymini/jira-pr-title-sync@v1.1'
         with:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
           JIRA_HOST_NAME: 'Jira api token'
@@ -61,4 +61,5 @@ jobs:
           TARGET_REGEX: 'Jira user email'
           REPO: 'Repository name'
           OWNER: 'Repository owner'
+          PULL_REQUEST_REF: ${{process.env.GITHUB_REF}}
 ```
