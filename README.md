@@ -1,6 +1,6 @@
 # Jira-PR-title-sync
 
-This action synchronizes the title of GitHub and the issue title of Jira.
+This action synchronizes the title of Pull Request and the issue title of Jira.
 
 ## Inputs
 
@@ -35,14 +35,30 @@ This action synchronizes the title of GitHub and the issue title of Jira.
 ## Example usage
 
 ```yaml
-# WIP...
-# uses: actions/hello-world-javascript-action@e76147da8e5c81eaf017dede5645551d4b94427b
-# with:
-#   GITHUB_TOKEN:
-#   JIRA_HOST_NAME: 'hostName'
-#   JIRA_API_TOKEN: 'token'
-#   JIRA_USER_EMAIL: 'email'
-#   TARGET_REGEX: 'regex'
-#   REPO: 'repo name'
-#   OWNER: 'owner'
+on:
+  pull_request:
+    types:
+      - opened
+
+jobs:
+  Run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Synchronize PR Title
+        uses: 'J-Ymini/jira-pr-title-sync@v0.1'
+        with:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          JIRA_HOST_NAME: 'Jira api token'
+          THE JIRA_USER_EMAIL: 'Jira host name'
+          TARGET_REGEX: 'Jira user email'
+          REPO: 'Repository name'
+          OWNER: 'Repository owner'
 ```
