@@ -7,7 +7,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import { GitHubApiClient, JiraApiClient } from "./class.js";
+import { GitHubApiClient, JiraApiClient } from "./class";
 const NOT_FOUND_MATCHED_ISSUE = 'No match found';
 const getPullRequestNumber = (githubRef) => {
     const regex = /\d+/;
@@ -66,9 +66,13 @@ export const updatePullRequestTitle = (_d) => __awaiter(void 0, [_d], void 0, fu
         return;
     }
     const pullRequestInfo = yield getPullRequestInfo({ githubApiClient, pullRequestNumber });
+    console.log({ pullRequestInfo });
     const branchName = pullRequestInfo.head.ref;
+    console.log({ branchName });
     const issueKey = yield getJiraIssueKey({ branchName, issueKeyRegex: issueKeyRegex });
+    console.log({ issueKey });
     const jiraInfo = yield getJiraInfo({ issueKey, jiraApiClient });
+    console.log({ getJiraInfo });
     const title = `[${issueKey}] ${jiraInfo.fields.summary}`;
     yield patchPullRequestTitle({ title, githubApiClient, pullRequestNumber });
 });
