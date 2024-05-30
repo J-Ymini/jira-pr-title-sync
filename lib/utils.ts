@@ -107,9 +107,13 @@ export const updatePullRequestTitle = async ({
     return;
   }
   const pullRequestInfo = await getPullRequestInfo({ githubApiClient, pullRequestNumber });
+  console.log({ pullRequestInfo })
   const branchName = pullRequestInfo.head.ref;
+  console.log({ branchName })
   const issueKey = await getJiraIssueKey({ branchName, issueKeyRegex: issueKeyRegex as RegExp });
+  console.log({ issueKey });
   const jiraInfo = await getJiraInfo({ issueKey, jiraApiClient });
+  console.log({ getJiraInfo });
   const title = `[${issueKey}] ${jiraInfo.fields.summary}`;
   await patchPullRequestTitle({ title, githubApiClient, pullRequestNumber });
 };
