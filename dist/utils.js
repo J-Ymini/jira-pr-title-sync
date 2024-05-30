@@ -7,7 +7,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import { GitHubApiClient, JiraApiClient } from "./class";
+import { GitHubApiClient, JiraApiClient } from "./class.js";
 const NOT_FOUND_MATCHED_ISSUE = 'No match found';
 const getPullRequestNumber = (githubRef) => {
     const regex = /\d+/;
